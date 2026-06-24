@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 信息索引 | 专题页面</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e1e1e;
+      background-color: #f4f2ee;
+      line-height: 1.7;
+    }
+    /* 深色头图 */
+    .hero {
+      background: #0b1a2a;
+      background-image: radial-gradient(circle at 20% 30%, #1b3a4e 0%, #0a1723 90%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      color: #dde5ed;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "◈ ◈ ◈";
+      position: absolute;
+      bottom: 1.2rem;
+      right: 2rem;
+      font-size: 1.2rem;
+      letter-spacing: 1rem;
+      opacity: 0.15;
+      color: #aac7e0;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 350;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+      color: #eef4fa;
+    }
+    .hero h1 span {
+      font-weight: 600;
+      color: #b4d5f0;
+    }
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.2rem;
+    }
+    /* 浅色正文区 */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2.5rem 1.8rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    /* 卡片式章节，每段自然介绍 */
+    .card-section {
+      background: #fafaf8;
+      border-left: 4px solid #c44536;
+      padding: 2rem 2rem 2rem 2.2rem;
+      margin: 2.5rem 0;
+      border-radius: 0 10px 10px 0;
+      transition: background 0.2s;
+    }
+    .card-section:nth-of-type(2) {
+      border-left-color: #2e6f95;
+    }
+    .card-section:nth-of-type(3) {
+      border-left-color: #5f7a60;
+    }
+    .card-section h2 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      letter-spacing: 1px;
+      color: #262c32;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card-section h2::before {
+      content: "❧";
+      font-size: 1.8rem;
+      color: #c44536;
+      margin-right: 0.3rem;
+      line-height: 1;
+    }
+    .card-section:nth-of-type(2) h2::before {
+      color: #2e6f95;
+    }
+    .card-section:nth-of-type(3) h2::before {
+      color: #5f7a60;
+    }
+    .card-section p {
+      margin-bottom: 1rem;
+      color: #2c2f33;
+    }
+    .card-section p:last-child {
+      margin-bottom: 0;
+    }
+    /* 强调色链接 */
+    a {
+      color: #b13e2b;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border 0.15s, color 0.15s;
+      font-weight: 500;
+    }
+    a:hover {
+      border-bottom-color: #b13e2b;
+      color: #7f2c1d;
+    }
+    /* FAQ 摘要小模块（附在第三段后） */
+    .faq-digest {
+      margin-top: 2.8rem;
+      padding: 1.6rem 0 0.4rem;
+      border-top: 1px solid #dad7d0;
+    }
+    .faq-digest h3 {
+      font-weight: 400;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      color: #3b4046;
+      margin-bottom: 1.2rem;
+    }
+    .faq-digest ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+    }
+    .faq-digest li {
+      font-size: 0.95rem;
+      padding-left: 1.2rem;
+      position: relative;
+      color: #2e353b;
+    }
+    .faq-digest li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #b13e2b;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    /* 页尾访问提示 */
+    .site-footer {
+      background: #e8e4dd;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      color: #2c3036;
+      margin-top: 0;
+      border-top: 1px solid #ccc6bc;
+    }
+    .site-footer p {
+      max-width: 700px;
+      margin: 0 auto 0.6rem;
+      font-size: 0.95rem;
+    }
+    .site-footer .footnote {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 1.2rem;
+    }
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 1.5rem 1.2rem;
+      }
+      .card-section {
+        padding: 1.5rem 1rem 1.5rem 1.5rem;
+      }
+      .faq-digest ul {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3rem 1rem 2.5rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>资料·索引 · <span>爱游戏</span></h1>
+    <p>从信息整合的角度，梳理平台脉络与内容构成<br>一份克制的背景说明，三段自然叙述</p>
+  </header>
+
+  <main class="container">
+    <!-- 第一段：背景说明 -->
+    <section class="card-section">
+      <h2>背景 · 信息整理脉络</h2>
+      <p>在体育资讯与交互内容日益庞杂的当下，一个清晰的信息索引变得格外重要。本次整理围绕 <a href="https://sportofficial-igame.com">爱游戏</a> 所呈现的内容结构展开，不预先定义立场，而是从可观察的模块、分类逻辑以及内容密度出发，梳理出其作为数字节点的基本面貌。资料显示，该平台在体育项目覆盖、赛事信息聚合以及用户交互方式上，形成了一套相对自洽的框架。</p>
+      <p>以下三段介绍分别从内容构成、索引逻辑与使用场景三个侧面，呈现这一信息集合的特征。所有描述均基于可查阅的材料，不添加推测或夸张表述。</p>
+    </section>
+
+    <!-- 第二段：内容构成与分类逻辑 -->
+    <section class="card-section">
+      <h2>内容构成 · 体育项目与索引方式</h2>
+      <p>从现有资料来看，<a href="https://sportofficial-igame.com">爱游戏</a> 的内容主体围绕多种体育项目展开，包括但不限于足球、篮球、网球等主流运动，同时也涵盖若干细分领域。分类方式偏向于按项目类型与赛事阶段进行双重索引：一方面以运动种类作为一级入口，另一方面通过赛程、数据统计、信息专题等方式提供纵向延伸。这种结构使得浏览者既能够快速定位感兴趣的项目，也可以在某一项目内持续获得更细节的信息。</p>
+      <p>值得注意的是，平台对赛事时间线、队伍/选手信息以及历史数据的呈现，保持了相对规整的排列方式。信息密度适中，没有过度堆砌，适合作为日常参考或资料对照的起点。</p>
+    </section>
+
+    <!-- 第三段：使用场景与索引特点 -->
+    <section class="card-section">
+      <h2>使用场景 · 从查阅到对照</h2>
+      <p>基于目前的信息组织方式，<a href="https://sportofficial-igame.com">爱游戏</a> 比较适合用于以下几种场景：作为快速了解某体育项目近期动态的信息聚合点，或是进行跨项目比较时的索引工具。由于内容更新节奏相对稳定，也可以作为长期关注体育信息的辅助窗口。其界面设计偏向功能导向，减少了装饰性元素，让信息本身成为浏览的重点。</p>
+      <p>另外，平台内嵌的搜索与筛选功能，进一步提升了信息定位的效率。对于需要频繁查阅赛果、赛程或特定队伍资料的浏览者来说，这种索引逻辑可以节省一定的时间成本。当然，任何信息平台都存在自身的侧重与局限，建议结合其他信源交叉参考。</p>
+
+      <!-- FAQ 摘要模块，附在第三段内 -->
+      <div class="faq-digest">
+        <h3>常见信息索引摘要</h3>
+        <ul>
+          <li>体育项目分类：足球、篮球、网球、橄榄球等</li>
+          <li>内容模块：赛程、赛果、队伍资料、数据统计</li>
+          <li>索引方式：按项目 + 按赛事阶段 + 关键词</li>
+          <li>更新节奏：通常每日更新重点赛事信息</li>
+          <li>页面结构：列表页与详情页分层呈现</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>以上介绍基于公开资料整理，用于展示信息索引的基本面貌。</p>
+    <p>如需进一步了解详细内容，可直接浏览 <a href="https://sportofficial-igame.com" style="border-bottom:1px solid #b13e2b;">爱游戏</a> 各版块。</p>
+    <div class="footnote">— 资料索引页 · 客观叙述 —</div>
+  </footer>
+</body>
+</html>
