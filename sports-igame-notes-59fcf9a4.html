@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 平稳可靠的兴趣入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(145deg, #fce9d2 0%, #f7d9b8 40%, #efc89a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.6;
+            color: #2d2b27;
+        }
+
+        .page-wrap {
+            max-width: 880px;
+            width: 100%;
+        }
+
+        /* 主卡片容器 */
+        .intro-card {
+            background: #fffffffa;
+            backdrop-filter: blur(1px);
+            border-radius: 36px 36px 28px 28px;
+            box-shadow: 0 12px 30px rgba(140, 90, 40, 0.13), 0 4px 10px rgba(0,0,0,0.03);
+            padding: 2.8rem 2.6rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 540px) {
+            .intro-card {
+                padding: 2rem 1.4rem;
+                border-radius: 28px 28px 20px 20px;
+            }
+        }
+
+        .badge-ribbon {
+            display: inline-block;
+            background: #b87b4b22;
+            border-left: 4px solid #b87b4b;
+            padding: 0.2rem 1rem 0.2rem 0.9rem;
+            border-radius: 0 30px 30px 0;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            color: #7c5d3e;
+            margin-bottom: 1.6rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #2e241b;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+
+        .sub-head {
+            font-size: 1rem;
+            color: #6f5e4c;
+            border-bottom: 1px dashed #dccfc0;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.2rem;
+        }
+
+        .sub-head span {
+            background: #efe3d6;
+            padding: 0.15rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #4f3f30;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            color: #3f372f;
+            margin-bottom: 1.6rem;
+        }
+
+        .intro-text strong {
+            color: #7a5a3b;
+            font-weight: 600;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        @media (max-width: 520px) {
+            .directory-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .dir-item {
+            background: #f7efe6;
+            border-radius: 22px;
+            padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+            border-left: 5px solid #cb9f79;
+            transition: background 0.2s;
+        }
+
+        .dir-item:hover {
+            background: #f2e5d6;
+        }
+
+        .dir-item .label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #3e2f21;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .dir-item .desc {
+            font-size: 0.88rem;
+            color: #5f4e3b;
+        }
+
+        .info-panel {
+            background: #fcf5ed;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 1.4rem;
+            border: 1px solid #eddccc;
+        }
+
+        .info-panel h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3f2e1d;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .info-panel p {
+            font-size: 0.95rem;
+            color: #4f3f2e;
+        }
+
+        .tip-box {
+            background: #e7d8c6;
+            border-radius: 60px 20px 20px 60px;
+            padding: 0.8rem 1.6rem;
+            display: inline-block;
+            margin: 1.4rem 0 0.4rem;
+            font-size: 0.9rem;
+            color: #3b2e20;
+        }
+
+        .faq-mini {
+            margin-top: 2rem;
+        }
+
+        .faq-mini details {
+            border-bottom: 1px solid #e6d7c4;
+            padding: 0.7rem 0;
+        }
+
+        .faq-mini details:first-of-type {
+            border-top: 1px solid #e6d7c4;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #4a3827;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            color: #b87b4b;
+            font-size: 1.1rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini .answer {
+            padding: 0.4rem 0 0.6rem 1.8rem;
+            font-size: 0.9rem;
+            color: #544434;
+        }
+
+        .link-sentence {
+            background: #f3e7da;
+            padding: 1.2rem 1.6rem;
+            border-radius: 40px;
+            margin: 2rem 0 1rem;
+            text-align: center;
+            font-size: 1rem;
+            color: #35291e;
+        }
+
+        .link-sentence a {
+            color: #7f5e3d;
+            background: #ffffffd0;
+            padding: 0.1rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid #dac0a8;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .link-sentence a:hover {
+            background: #ffffff;
+            border-color: #b07d55;
+            box-shadow: 0 2px 6px rgba(140, 80, 20, 0.13);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6a5b4a;
+            padding: 1.8rem 0 0.6rem;
+            opacity: 0.8;
+            border-top: 1px solid #dccfc0;
+            margin-top: 1.2rem;
+        }
+
+        .footer-note a {
+            color: #6a5b4a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e4d4c0;
+            margin: 1.8rem 0 0.6rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="intro-card">
+
+        <div class="badge-ribbon">📚 知识库入口 · 稳定持续</div>
+
+        <h1>爱游戏 · 兴趣的安静锚点</h1>
+
+        <div class="sub-head">
+            <span>📌 目录索引</span>
+            <span>📖 说明区</span>
+            <span>💡 提示区</span>
+            <span>🔗 相关信息</span>
+        </div>
+
+        <div class="intro-text">
+            <p>很多朋友在寻找一个可以长久停留、信息清晰的地方。与其在信息流里被动刷新，不如把<strong>一个稳定的入口</strong>放在手边。<strong><a href="https://sports--igame.com" style="color: #7f5e3d; text-decoration: underline; text-underline-offset: 3px;">爱游戏</a></strong>正是这样一处——它不追求浮夸的跳转，而是提供平实、可靠的浏览起点。无论你是想了解某个方向，还是单纯需要一个干净的内容索引，这里都适合慢慢翻看。</p>
+        </div>
+
+        <!-- 目录感布局 -->
+        <div class="directory-grid">
+            <div class="dir-item">
+                <span class="label">🧭 内容目录</span>
+                <span class="desc">按兴趣分类的导航模块，方便快速定位你关心的板块。</span>
+            </div>
+            <div class="dir-item">
+                <span class="label">📋 说明区</span>
+                <span class="desc">每个分类旁都配有简短说明，降低试错成本。</span>
+            </div>
+            <div class="dir-item">
+                <span class="label">📌 提示区</span>
+                <span class="desc">使用中可能会遇到的小细节，这里提前打个招呼。</span>
+            </div>
+            <div class="dir-item">
+                <span class="label">🔍 相关信息</span>
+                <span class="desc">与当前主题关联的补充内容，方便延伸阅读。</span>
+            </div>
+        </div>
+
+        <!-- 说明区 + 提示区 融合 -->
+        <div class="info-panel">
+            <h3>📖 说明 · 这个页面怎么用</h3>
+            <p>整个页面可以看作一个轻量的知识库入口。每个区块都对应一个主题方向，你可以在目录区快速预览，然后顺着链接或分类标签深入。页面本身不存储大量内容，而是帮你把<strong>经过筛选的起点</strong>整理好。如果你之前觉得信息太杂、无从下手，不妨从这里开始，一步一步来。</p>
+            <div class="tip-box">
+                💡 提示：把页面添加到书签，下次回来不用重新搜索。
+            </div>
+        </div>
+
+        <!-- FAQ 摘要区（相关信息） -->
+        <div class="faq-mini">
+            <details>
+                <summary>爱游戏 的定位是什么？</summary>
+                <div class="answer">它是一个提供稳定浏览体验的内容入口，强调信息分类清晰、跳转直接，减少不必要的干扰。</div>
+            </details>
+            <details>
+                <summary>需要注册或登录才能使用吗？</summary>
+                <div class="answer">不需要。网站本身以公开内容为主，你只需要跟着目录或链接浏览即可，无需额外操作。</div>
+            </details>
+            <details>
+                <summary>我可以在这里找到哪些类型的信息？</summary>
+                <div class="answer">涵盖多个兴趣方向，每个方向都有独立的说明区域。你可以通过目录区块快速了解大致分类。</div>
+            </details>
+        </div>
+
+        <!-- 自然嵌入链接的句子 -->
+        <div class="link-sentence">
+            <span>如果你想直接开始，可以前往</span>
+            <a href="https://sports--igame.com">爱游戏</a>
+            <span>，从目录中挑选感兴趣的部分。</span>
+        </div>
+
+        <hr>
+
+        <p style="font-size: 0.9rem; color: #4e3f2f; margin-top: 0.8rem;">
+            <span style="background: #e7d6c2; padding: 0.1rem 0.8rem; border-radius: 20px;">📎 相关信息</span>
+            &nbsp; 本站所有链接均指向 <a href="https://sports--igame.com" style="color: #6f523b;">爱游戏</a> 下的内容，保持统一入口。如果你在浏览中遇到任何疑问，欢迎随时回来查看说明区。
+        </p>
+
+        <div class="footer-note">
+            <a href="https://sports--igame.com">爱游戏</a> · 一个平实的内容索引 · 保持简单
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
