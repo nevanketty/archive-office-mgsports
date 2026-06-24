@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>爱游戏 · 运动门户介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f7fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1f2e3c;
+            line-height: 1.6;
+            padding: 2rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 标题与基调 */
+        .hero {
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0f3b4a;
+            border-left: 5px solid #2c9b8e;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #3b5a67;
+            max-width: 680px;
+            margin-top: 0.3rem;
+        }
+
+        .sub-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            color: #4c6a78;
+            font-size: 0.95rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #d0e2e8;
+            margin-top: -0.2rem;
+        }
+
+        .sub-head span {
+            background: #e5f0f4;
+            padding: 0.15rem 0.9rem;
+            border-radius: 20px;
+            color: #1f5b63;
+        }
+
+        /* 网格卡片 */
+        .grid-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.6rem 1.4rem 1.8rem;
+            box-shadow: 0 6px 16px rgba(27, 58, 66, 0.06);
+            transition: transform 0.2s ease;
+            border: 1px solid #dceef2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #85c7c0;
+            box-shadow: 0 12px 28px rgba(33, 93, 97, 0.08);
+        }
+
+        .card .icon {
+            display: inline-block;
+            background: #d9f0ed;
+            border-radius: 40px;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #1b7a6e;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: #0c3f4b;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            color: #345560;
+            font-size: 0.98rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #eef8f6;
+            color: #186a60;
+            font-size: 0.8rem;
+            padding: 0.15rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        /* 场景 + 使用建议 */
+        .scene-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.5rem 0 2rem;
+            background: white;
+            padding: 1.8rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(9, 50, 56, 0.04);
+            border: 1px solid #d2e7ea;
+        }
+
+        .scene-text {
+            flex: 2;
+            min-width: 240px;
+        }
+
+        .scene-text h2 {
+            font-weight: 450;
+            font-size: 1.5rem;
+            color: #0f414e;
+            margin-bottom: 0.7rem;
+        }
+
+        .scene-text p {
+            margin-bottom: 1rem;
+            color: #2c515e;
+        }
+
+        .scene-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scene-text li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #2f5765;
+        }
+
+        .scene-text li::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: #30978a;
+            font-size: 0.9rem;
+        }
+
+        .scene-note {
+            flex: 1.1;
+            background: #eef7f5;
+            border-radius: 20px;
+            padding: 1.4rem 1.6rem;
+            border-left: 4px solid #359f91;
+            min-width: 180px;
+        }
+
+        .scene-note p {
+            font-size: 0.95rem;
+            color: #1c4b50;
+            margin-bottom: 0.6rem;
+            font-weight: 420;
+        }
+
+        .scene-note small {
+            color: #3d6d74;
+            display: block;
+            line-height: 1.5;
+        }
+
+        /* 可信说明模块 */
+        .trust {
+            background: #e3f1ef;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 1.8rem 0 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .trust-icon {
+            background: #ffffffc9;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #176b60;
+            flex-shrink: 0;
+        }
+
+        .trust-content {
+            flex: 1;
+        }
+
+        .trust-content h4 {
+            font-weight: 500;
+            font-size: 1.25rem;
+            color: #0b3c45;
+            margin-bottom: 0.2rem;
+        }
+
+        .trust-content p {
+            color: #2f5b65;
+            margin-bottom: 0.3rem;
+        }
+
+        .trust-content a {
+            color: #176b60;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #6bb2a8;
+        }
+
+        .trust-content a:hover {
+            border-bottom-style: solid;
+            color: #0b4f45;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid #d6e7ea;
+            transition: background 0.15s;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #153e47;
+            margin-bottom: 0.2rem;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-item .q::before {
+            content: "❓";
+            font-size: 0.85rem;
+            margin-right: 6px;
+            opacity: 0.7;
+        }
+
+        .faq-item .a {
+            color: #385f69;
+            font-size: 0.9rem;
+            padding-left: 1.6rem;
+        }
+
+        .faq-item:hover {
+            background: #f5fcfb;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            color: #5b7f89;
+            font-size: 0.85rem;
+            border-top: 1px solid #cfe0e4;
+            padding-top: 1.8rem;
+        }
+
+        .footer a {
+            color: #267268;
+            text-decoration: none;
+            border-bottom: 1px dotted #91beb6;
+        }
+
+        .footer a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.6rem 1rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+                padding-left: 0.9rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .scene-wrapper {
+                padding: 1.4rem 1.2rem;
+                flex-direction: column;
+            }
+            .card {
+                padding: 1.3rem 1rem;
+            }
+            .trust {
+                padding: 1.4rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .trust-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .grid-card {
+                grid-template-columns: 1fr;
+            }
+            .faq-mini {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <section class="hero">
+        <h1>运动信息 · 轻量门户</h1>
+        <p>一个围绕赛事与运动生活的内容索引，整合动态与基础信息，提供相对完整的参考界面。本站点由<a href="https://sportportal-igame.com" style="color:#166e62; font-weight:500; text-decoration:none; border-bottom:1px dashed #6bb2a8;">爱游戏</a>维持并定期更新。</p>
+        <div class="sub-head">
+            <span>⚡ 聚合 · 运动 · 表达</span>
+            <span>更新于 2025</span>
+        </div>
+    </section>
+
+    <!-- 摘要亮点卡片 -->
+    <div class="grid-card">
+        <div class="card">
+            <div class="icon">📋</div>
+            <h3>赛事摘要</h3>
+            <p>覆盖主流联赛与重点赛事的实时数据、阵容趋势与短消息，减少信息碎片。</p>
+            <span class="tag">动态精简</span>
+        </div>
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>版块导览</h3>
+            <p>按类型划分内容区域：比分、赛程、队伍近况、场地简讯，查找相对直接。</p>
+            <span class="tag">分类清晰</span>
+        </div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>数据参考</h3>
+            <p>提供历史对阵、近期表现等统计视图，可作为观赛或轻度分析的辅助。</p>
+            <span class="tag">克制呈现</span>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 场景说明 -->
+    <div class="scene-wrapper">
+        <div class="scene-text">
+            <h2>适合哪些场景？</h2>
+            <p>站点定位为运动信息聚合，不追求即时刷新的极端速度，更侧重整体可读与稳定。以下是一些典型用法：</p>
+            <ul>
+                <li>快速回顾前一日关键赛果与比分变化</li>
+                <li>查看即将开始的焦点战时间及队伍状态</li>
+                <li>横向对比同联赛不同队伍的近期走势</li>
+                <li>在非高峰时段浏览深度不够但简洁的赛前简报</li>
+            </ul>
+        </div>
+        <div class="scene-note">
+            <p>💡 使用建议</p>
+            <small>建议将页面添加到书签，或通过<a href="https://sportportal-igame.com" style="color:#1f7065; text-decoration:underline dotted;">爱游戏</a>首页直接进入。内容更新节奏偏稳健，适合每日固定浏览。</small>
+            <small style="margin-top:0.6rem;">移动端浏览体验经过适配，卡片区域支持触控交互。</small>
+        </div>
+    </div>
+
+    <!-- 可信说明 -->
+    <div class="trust">
+        <div class="trust-icon">🛡️</div>
+        <div class="trust-content">
+            <h4>关于站点可信说明</h4>
+            <p>本站内容主要来源于公开赛事数据与编辑整理，尽力保证基础准确。不提供博彩引导或虚假排名。任何疑问或错误反馈均可通过页面渠道联系。</p>
+            <p>🔗 直接访问：<a href="https://sportportal-igame.com">爱游戏</a> — 运动门户首页（建议使用现代浏览器）</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">数据更新频率？</div>
+            <div class="a">每日白天多次更新，深夜赛事于次日上午完成录入。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">是否提供历史赛季深度数据？</div>
+            <div class="a">主要覆盖近两个完整赛季，更早数据逐步补充。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">移动端能否正常使用？</div>
+            <div class="a">完全适配，卡片布局与字体均针对小屏优化。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">是否需要注册或登录？</div>
+            <div class="a">浏览内容无需注册，部分交互功能可选。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>内容仅供一般参考 · 不构成任何决策依据</p>
+        <p style="margin-top:0.1rem;"><a href="https://sportportal-igame.com">爱游戏</a> · 运动信息聚合 · 保持适度更新</p>
+    </div>
+</div>
+</body>
+</html>
